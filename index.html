@@ -96,8 +96,8 @@
   .mob-menu a:hover{color:var(--g)}
 
   /* ══ HERO ══ */
-  /* hero peeks bento on desktop */
-  .hero{position:relative;height:calc(100svh - var(--nav) - 80px);min-height:480px;margin-top:var(--nav);overflow:hidden;background:#000}
+  /* hero peeks bento on desktop; smaller peek on mobile */
+  .hero{position:relative;height:calc(100svh - var(--nav) - 140px);min-height:480px;margin-top:var(--nav);overflow:hidden;background:#000}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 45%;filter:brightness(0.6);will-change:opacity;transition:opacity .9s ease,background-position .5s ease}
   .hero-vignette{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,0.96) 0%,rgba(6,6,6,0.7) 22%,rgba(6,6,6,0.2) 45%,transparent 62%)}
   .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 28px 44px;z-index:2;max-width:100%}
@@ -426,9 +426,9 @@
     .svc-card-img{padding:14px 14px 8px}
     .svc-card-img img{min-height:240px;border-radius:0}
     .svc-card-info{padding:20px 20px 28px}
-    .contact-hero{padding:16px 20px 12px}
+    .contact-hero{padding:16px 20px 12px;min-height:0}
     .contact-hero h1{font-size:clamp(20px,6.5vw,32px);margin-bottom:4px}
-    .contact-hero p{font-size:11px;margin-top:4px;margin-bottom:0}
+    .contact-hero p{font-size:11px;margin-top:4px;margin-bottom:0;display:none}
     .gal-hdr{padding:40px 24px 0}
     .gal-controls{padding:0 8px}
     .about-hero-grid{grid-template-columns:1fr;min-height:auto}
@@ -730,7 +730,7 @@
       <div class="bento-arrow">↗</div>
     </div>
     <div class="bento-item" onclick="go('services')">
-      <img src="IMG_7244.webp" alt="Black Lamborghini Urus PPF" loading="eager" style="object-position:center 58%"/>
+      <img src="IMG_7244.jpg" alt="Black Lamborghini Urus PPF" loading="eager" style="object-position:center 58%"/>
       <div class="bento-overlay"></div>
       <div class="bento-label">
         <span class="bento-tag">Service</span>
@@ -892,7 +892,7 @@
         <div class="pc-img"><img src="IMG_7226.webp" alt="AMG wrap"/></div>
         <div class="pc-img"><img src="IMG_7238.webp" alt="Lambo"/></div>
         <div class="pc-img"><img src="IMG_7205.webp" alt="BMW"/></div>
-        <div class="pc-img"><img src="IMG_7237.webp" alt="Lambo 2"/></div>
+        <div class="pc-img"><img src="IMG_7237.jpg" alt="Lambo 2"/></div>
         <!-- duplicate set for seamless loop -->
         <div class="pc-img"><img src="IMG_7239.webp" alt="Wrap"/></div>
         <div class="pc-img"><img src="IMG_7251.webp" alt="Tint"/></div>
@@ -901,7 +901,7 @@
         <div class="pc-img"><img src="IMG_7226.webp" alt="AMG wrap"/></div>
         <div class="pc-img"><img src="IMG_7238.webp" alt="Lambo"/></div>
         <div class="pc-img"><img src="IMG_7205.webp" alt="BMW"/></div>
-        <div class="pc-img"><img src="IMG_7237.webp" alt="Lambo 2"/></div>
+        <div class="pc-img"><img src="IMG_7237.jpg" alt="Lambo 2"/></div>
       </div>
     </div>
   </div>
@@ -909,7 +909,7 @@
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-banner-bg">
-      <img src="IMG_7237.webp" alt="Lamborghini Revuelto wrap Fort Worth" loading="lazy"/>
+      <img src="IMG_7237.jpg" alt="Lamborghini Revuelto wrap Fort Worth" loading="lazy"/>
     </div>
     <div class="cta-banner-content">
       <div class="cta-eyebrow">Fort Worth, TX &mdash; By Appointment</div>
@@ -966,7 +966,7 @@
   <div class="about-process">
     <div class="proc-grid">
       <div class="proc-img">
-        <img src="IMG_7210.webp" alt="Lamborghini Urus PPF IWRAPS Fort Worth" loading="lazy" style="object-position:center 55%"/>
+        <img src="IMG_7210.jpg" alt="Lamborghini Urus PPF IWRAPS Fort Worth" loading="lazy" style="object-position:center 55%"/>
       </div>
       <div class="proc-text">
         <div class="eyetag-lt" style="margin-bottom:16px">Our Process</div>
@@ -1064,7 +1064,7 @@
     <!-- COATINGS -->
     <div class="svc-card" id="svc-coating">
       <div class="svc-card-img">
-        <img src="IMG_7210.webp" alt="Lamborghini Urus ceramic coating Fort Worth" loading="lazy" style="object-position:center 55%"/>
+        <img src="IMG_7210.jpg" alt="Lamborghini Urus ceramic coating Fort Worth" loading="lazy" style="object-position:center 55%"/>
       </div>
       <div class="svc-card-info">
         <span class="svc-card-num">04</span>
@@ -1151,7 +1151,8 @@
     <div class="contact-right">
       <h2 class="cf-title">Request A Quote</h2>
       <p class="cf-sub">Fill out the form and we'll get back to you shortly</p>
-      <form class="cf" action="https://formsubmit.co/YOUR_EMAIL_HERE" <!-- TODO: REPLACE YOUR_EMAIL_HERE WITH CLIENT EMAIL --> method="POST" onsubmit="submitForm(event)">
+      <!-- TODO: Replace YOUR_EMAIL_HERE in the action below with the client's email before deploying -->
+      <form class="cf" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" onsubmit="submitForm(event)">
         <input type="hidden" name="_subject" value="New Quote Request — IWRAPS"/>
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" name="_template" value="table"/>
@@ -1314,7 +1315,7 @@ window.scrollTo(0,0);
 const HERO_IMGS=[
   {src:'IMG_7239.webp', mob:'center 50%', desk:'center 70%'},
   {src:'IMG_7295.webp', mob:'center 55%', desk:'center 60%'},
-  {src:'IMG_7222.webp', mob:'center 35%', desk:'center 55%'},
+  {src:'IMG_7222.jpg', mob:'center 35%', desk:'center 55%'},
   {src:'IMG_7226.webp', mob:'center 40%', desk:'center 68%'},
   {src:'IMG_7247.webp', mob:'center 55%', desk:'center 65%'},
   {src:'IMG_7207.webp', mob:'center 50%', desk:'center 58%'},
@@ -1379,50 +1380,50 @@ const GALLERY=[
   {src:'IMG_7226.webp',cat:'wrap',alt:'Purple Mercedes AMG GT wrap DFW night'},
   {src:'IMG_7205.webp',cat:'wrap',alt:'BMW i8 in private studio Fort Worth'},
   {src:'IMG_7209.webp',cat:'wrap',alt:'Orange Lamborghini Urus two-tone wrap'},
-  {src:'IMG_7237.webp',cat:'wrap',alt:'Matte grey Lamborghini Revuelto wrap DFW'},
+  {src:'IMG_7237.jpg',cat:'wrap',alt:'Matte grey Lamborghini Revuelto wrap DFW'},
   {src:'IMG_7238.webp',cat:'wrap',alt:'Lamborghini Revuelto front wrap Fort Worth'},
   {src:'IMG_7214.webp',cat:'ppf',alt:'Red Ferrari 488 GTB Fort Worth TX'},
   {src:'IMG_7216.webp',cat:'ppf',alt:'White Ferrari 488 PPF paint protection'},
   {src:'IMG_7229.webp',cat:'wrap',alt:'Matte black Dodge Charger Hellcat dragon wrap'},
-  {src:'IMG_7250.webp',cat:'tint',alt:'Matte black Mercedes G63 AMG tint DFW'},
-  {src:'IMG_7262.webp',cat:'wrap',alt:'Grabber Blue Shelby GT500 wrap Fort Worth'},
-  {src:'IMG_7264.webp',cat:'wrap',alt:'Orange Dodge Charger SRT Hellcat wrap front'},
-  {src:'IMG_7265.webp',cat:'wrap',alt:'Orange Dodge Charger SRT wrap with graphics'},
+  {src:'IMG_7250.jpg',cat:'tint',alt:'Matte black Mercedes G63 AMG tint DFW'},
+  {src:'IMG_7262.jpg',cat:'wrap',alt:'Grabber Blue Shelby GT500 wrap Fort Worth'},
+  {src:'IMG_7264.jpg',cat:'wrap',alt:'Orange Dodge Charger SRT Hellcat wrap front'},
+  {src:'IMG_7265.jpg',cat:'wrap',alt:'Orange Dodge Charger SRT wrap with graphics'},
   {src:'IMG_7247.webp',cat:'tint',alt:'RAM TRX tint purple underglow Fort Worth'},
-  {src:'IMG_7222.webp',cat:'wrap',alt:'Red Tesla Cybertruck full wrap Fort Worth'},
+  {src:'IMG_7222.jpg',cat:'wrap',alt:'Red Tesla Cybertruck full wrap Fort Worth'},
   {src:'IMG_7223.webp',cat:'wrap',alt:'Red Tesla Cybertruck side profile wrap'},
   {src:'IMG_7211.webp',cat:'wrap',alt:'Matte charcoal Lamborghini Urus wrap'},
   {src:'IMG_7251.webp',cat:'tint',alt:'Mercedes G63 AMG front view matte tint'},
-  {src:'IMG_7252.webp',cat:'tint',alt:'White Mercedes G-Wagon tint Fort Worth'},
+  {src:'IMG_7252.jpg',cat:'tint',alt:'White Mercedes G-Wagon tint Fort Worth'},
   {src:'IMG_7215.webp',cat:'ppf',alt:'Ferrari 488 side profile Fort Worth'},
   {src:'IMG_7218.webp',cat:'ppf',alt:'White Ferrari 488 rear PPF DFW'},
-  {src:'IMG_7217.webp',cat:'ppf',alt:'White Ferrari wheel detail Fort Worth'},
-  {src:'IMG_7235.webp',cat:'wrap',alt:'Deep red BMW M4 wrap studio DFW'},
-  {src:'IMG_7236.webp',cat:'wrap',alt:'BMW M4 red coating Fort Worth'},
-  {src:'IMG_7256.webp',cat:'wrap',alt:'Matte brown BMW X6 wrap Fort Worth'},
-  {src:'IMG_7241.webp',cat:'wrap',alt:'Pink Jeep Wrangler Rubicon wrap Fort Worth'},
-  {src:'IMG_7243.webp',cat:'tint',alt:'Blue Jeep Wrangler Rubicon tint DFW'},
-  {src:'IMG_7248.webp',cat:'wrap',alt:'Matte black Tesla Model S wrap DFW'},
-  {src:'IMG_7212.webp',cat:'wrap',alt:'Gloss black Lamborghini Urus wrap DFW'},
-  {src:'IMG_7234.webp',cat:'wrap',alt:'Matte black Lamborghini Urus in shop'},
-  {src:'IMG_7233.webp',cat:'wrap',alt:'Matte bronze Mercedes S-Class wrap'},
+  {src:'IMG_7217.jpg',cat:'ppf',alt:'White Ferrari wheel detail Fort Worth'},
+  {src:'IMG_7235.jpg',cat:'wrap',alt:'Deep red BMW M4 wrap studio DFW'},
+  {src:'IMG_7236.jpg',cat:'wrap',alt:'BMW M4 red coating Fort Worth'},
+  {src:'IMG_7256.jpg',cat:'wrap',alt:'Matte brown BMW X6 wrap Fort Worth'},
+  {src:'IMG_7241.jpg',cat:'wrap',alt:'Pink Jeep Wrangler Rubicon wrap Fort Worth'},
+  {src:'IMG_7243.jpg',cat:'tint',alt:'Blue Jeep Wrangler Rubicon tint DFW'},
+  {src:'IMG_7248.jpg',cat:'wrap',alt:'Matte black Tesla Model S wrap DFW'},
+  {src:'IMG_7212.jpg',cat:'wrap',alt:'Gloss black Lamborghini Urus wrap DFW'},
+  {src:'IMG_7234.jpg',cat:'wrap',alt:'Matte black Lamborghini Urus in shop'},
+  {src:'IMG_7233.jpg',cat:'wrap',alt:'Matte bronze Mercedes S-Class wrap'},
   {src:'IMG_7257.webp',cat:'wrap',alt:'Blue Corvette C7 neon stripe wrap DFW'},
-  {src:'IMG_7258.webp',cat:'wrap',alt:'Blue Corvette C7 front neon stripe'},
-  {src:'IMG_7261.webp',cat:'tint',alt:'White Corvette C8 PPF tint DFW'},
+  {src:'IMG_7258.jpg',cat:'wrap',alt:'Blue Corvette C7 front neon stripe'},
+  {src:'IMG_7261.jpg',cat:'tint',alt:'White Corvette C8 PPF tint DFW'},
   {src:'IMG_7295.webp',cat:'wrap',alt:'Sport bike motorcycle night wrap'},
-  {src:'IMG_7296.webp',cat:'wrap',alt:'Black Yamaha R1 motorcycle wrap'},
-  {src:'IMG_7278.webp',cat:'wrap',alt:'Sport bike motorcycle studio wrap'},
-  {src:'IMG_7287.webp',cat:'wrap',alt:'Matte forest green Tesla Model Y wrap DFW'},
-  {src:'IMG_7293.webp',cat:'wrap',alt:'Dodge Charger camo two-tone wrap'},
-  {src:'IMG_7285.webp',cat:'wrap',alt:'Neon yellow Lexus IS carbon hood wrap'},
-  {src:'IMG_7284.webp',cat:'wrap',alt:'Neon yellow Lexus IS rear wrap DFW'},
-  {src:'IMG_7291.webp',cat:'wrap',alt:'Subaru WRX STI dark camo wrap Fort Worth'},
-  {src:'IMG_7294.webp',cat:'wrap',alt:'Tan Dodge Challenger SRT wrap Fort Worth'},
-  {src:'IMG_7289.webp',cat:'wrap',alt:'Matte black Tesla Model 3 wrap DFW'},
-  {src:'IMG_7277.webp',cat:'wrap',alt:'BMW i8 camo wrap IWRAPS studio'},
-  {src:'IMG_7288.webp',cat:'wrap',alt:'BMW i8 camo wrap Fort Worth studio'},
-  {src:'IMG_7279.webp',cat:'tint',alt:'Red Mustang Shelby window tint Fort Worth'},
-  {src:'IMG_7286.webp',cat:'tint',alt:'Black Tesla Model 3 ceramic tint DFW'},
+  {src:'IMG_7296.jpg',cat:'wrap',alt:'Black Yamaha R1 motorcycle wrap'},
+  {src:'IMG_7278.jpg',cat:'wrap',alt:'Sport bike motorcycle studio wrap'},
+  {src:'IMG_7287.jpg',cat:'wrap',alt:'Matte forest green Tesla Model Y wrap DFW'},
+  {src:'IMG_7293.jpg',cat:'wrap',alt:'Dodge Charger camo two-tone wrap'},
+  {src:'IMG_7285.jpg',cat:'wrap',alt:'Neon yellow Lexus IS carbon hood wrap'},
+  {src:'IMG_7284.jpg',cat:'wrap',alt:'Neon yellow Lexus IS rear wrap DFW'},
+  {src:'IMG_7291.jpg',cat:'wrap',alt:'Subaru WRX STI dark camo wrap Fort Worth'},
+  {src:'IMG_7294.jpg',cat:'wrap',alt:'Tan Dodge Challenger SRT wrap Fort Worth'},
+  {src:'IMG_7289.jpg',cat:'wrap',alt:'Matte black Tesla Model 3 wrap DFW'},
+  {src:'IMG_7277.jpg',cat:'wrap',alt:'BMW i8 camo wrap IWRAPS studio'},
+  {src:'IMG_7288.jpg',cat:'wrap',alt:'BMW i8 camo wrap Fort Worth studio'},
+  {src:'IMG_7279.jpg',cat:'tint',alt:'Red Mustang Shelby window tint Fort Worth'},
+  {src:'IMG_7286.jpg',cat:'tint',alt:'Black Tesla Model 3 ceramic tint DFW'},
   {src:'IMG_7206.webp',cat:'wrap',alt:'Pink Tesla Model Y color change wrap'},
   {src:'IMG_7207.webp',cat:'wrap',alt:'Pink Tesla Model Y wrap side profile'},
   {src:'IMG_7220.webp',cat:'wrap',alt:'Pink Honda Accord stanced wrap'},
@@ -1431,10 +1432,10 @@ const GALLERY=[
   {src:'IMG_7255.webp',cat:'wrap',alt:'Tan Ford Mustang GT wrap Fort Worth'},
   {src:'IMG_7221.webp',cat:'tint',alt:'Matte grey Mercedes AMG GT53 tint'},
   {src:'IMG_7232.webp',cat:'wrap',alt:'Purple Mercedes AMG GT rear Dallas night'},
-  {src:'IMG_7253.webp',cat:'tint',alt:'Grey Mercedes AMG GT53 tint side view'},
-  {src:'IMG_7228.webp',cat:'wrap',alt:'Matte black Dodge Charger custom wrap'},
-  {src:'IMG_7230.webp',cat:'wrap',alt:'Dodge Charger Hellcat night shot DFW'},
-  {src:'IMG_7225.webp',cat:'wrap',alt:'Red Dodge Charger matte black hood wrap'},
+  {src:'IMG_7253.jpg',cat:'tint',alt:'Grey Mercedes AMG GT53 tint side view'},
+  {src:'IMG_7228.jpg',cat:'wrap',alt:'Matte black Dodge Charger custom wrap'},
+  {src:'IMG_7230.jpg',cat:'wrap',alt:'Dodge Charger Hellcat night shot DFW'},
+  {src:'IMG_7225.jpg',cat:'wrap',alt:'Red Dodge Charger matte black hood wrap'},
   {src:'IMG_7213.webp',cat:'wrap',alt:'Black on black Lamborghini Urus DFW'},
   {src:'IMG_7208.webp',cat:'wrap',alt:'Orange Lamborghini Urus SE carbon wrap DFW'},
   {src:'IMG_7224.webp',cat:'wrap',alt:'Matte charcoal Lamborghini Urus wrap Fort Worth'},
