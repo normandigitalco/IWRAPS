@@ -24,15 +24,15 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="IWRAPS | Vehicle Wraps, Window Tint &amp; PPF — Fort Worth, TX"/>
   <meta name="twitter:description" content="Fort Worth's premier wrap studio. Vehicle wraps, ceramic tint &amp; PPF — private appointment-only. Serving all of DFW."/>
-  <meta name="twitter:image" content="https://iwraps.pages.dev/IMG_7207.webp"/>
+  <meta name="twitter:image" content="https://iwraps.pages.dev/IMG_7207.jpg"/>
 
   <meta property="og:url" content="https://iwraps.pages.dev/"/>
   <meta property="og:title" content="IWRAPS | Vehicle Wraps, Window Tint & PPF — Fort Worth, TX"/>
   <meta property="og:description" content="High end vehicle wraps, window tint & PPF. Private studio, appointment based. Serving Fort Worth and all of DFW."/>
-  <meta property="og:image" content="https://iwraps.pages.dev/IMG_7207.webp"/>
+  <meta property="og:image" content="https://iwraps.pages.dev/IMG_7207.jpg"/>
   <meta property="og:image:width" content="1080"/>
   <meta property="og:image:height" content="1350"/>
-  <meta property="og:image:type" content="image/webp"/>
+  <meta property="og:image:type" content="image/jpeg"/>
   <meta name="description" content="High end vehicle wraps, window tint & PPF in Fort Worth, TX. Private appointment-based studio serving all of DFW."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://iwrapstx.com/"/>
@@ -117,7 +117,7 @@
   /* ══ HERO ══ */
   /* mobile: tall hero, just a sliver of next section visible */
   .hero{position:relative;height:calc(calc(var(--vh, 1vh) * 100) - var(--nav) - 48px);min-height:480px;margin-top:var(--nav);overflow:hidden;background:#000}
-  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 45%;filter:brightness(0.6);will-change:opacity;transition:opacity .9s ease,background-position .5s ease}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 45%;filter:brightness(0.6);transition:opacity .9s ease;-webkit-transform:translateZ(0);transform:translateZ(0)}
   .hero-vignette{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,0.96) 0%,rgba(6,6,6,0.7) 22%,rgba(6,6,6,0.2) 45%,transparent 62%)}
   .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 28px 44px;z-index:2;max-width:100%}
   .hero-eyebrow{font-family:'Inter',var(--body);font-size:11px;font-weight:500;letter-spacing:0.5px;text-transform:none;color:rgba(255,255,255,0.55);margin-bottom:12px;display:flex;align-items:center;gap:8px}
@@ -780,7 +780,7 @@
   <!-- SERVICE CARDS — Porsche/Lucid style rounded cards -->
   <div class="svc-cards-hero">
     <div class="sch-card" onclick="goService('svc-wraps')">
-      <img src="IMG_7207.webp" alt="Vehicle Wraps" style="object-position:center 55%"/>
+      <img src="IMG_7207.jpg" alt="Vehicle Wraps" style="object-position:center 55%"/>
       <div class="sch-overlay"></div>
       <div class="sch-label">
         <span class="sch-title">Go Any Color.</span>
@@ -1343,7 +1343,7 @@ const HERO_IMGS=[
   {src:'IMG_7222.jpg', mob:'center 35%', desk:'center 55%'},
   {src:'IMG_7226.webp', mob:'center 40%', desk:'center 68%'},
   {src:'IMG_7247.webp', mob:'center 55%', desk:'center 65%'},
-  {src:'IMG_7207.webp', mob:'center 50%', desk:'center 58%'},
+  {src:'IMG_7207.jpg', mob:'center 50%', desk:'center 58%'},
 ];
 function heroPos(img){return window.innerWidth>=768?img.desk:img.mob;}
 let hCur=0;
@@ -1450,7 +1450,7 @@ const GALLERY=[
   {src:'IMG_7279.jpg',cat:'tint',alt:'Red Mustang Shelby window tint Fort Worth'},
   {src:'IMG_7286.jpg',cat:'tint',alt:'Black Tesla Model 3 ceramic tint DFW'},
   {src:'IMG_7206.webp',cat:'wrap',alt:'Pink Tesla Model Y color change wrap'},
-  {src:'IMG_7207.webp',cat:'wrap',alt:'Pink Tesla Model Y wrap side profile'},
+  {src:'IMG_7207.jpg',cat:'wrap',alt:'Pink Tesla Model Y wrap side profile'},
   {src:'IMG_7220.webp',cat:'wrap',alt:'Pink Honda Accord stanced wrap'},
   {src:'IMG_7231.webp',cat:'wrap',alt:'Color shift BMW S1000RR motorcycle wrap'},
   {src:'IMG_7219.webp',cat:'wrap',alt:'Purple Honda Accord stanced wrap'},
