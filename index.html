@@ -116,7 +116,7 @@
 
   /* ══ HERO ══ */
   /* mobile: tall hero, just a sliver of next section visible */
-  .hero{position:relative;height:calc(calc(var(--vh, 1vh) * 100) - var(--nav) - 48px);min-height:480px;margin-top:var(--nav);overflow:hidden;background:#000}
+  .hero{position:relative;height:calc(calc(var(--vh, 1vh) * 100) - var(--nav) - 48px);min-height:480px;margin-top:var(--nav);overflow:hidden;background:#000;touch-action:pan-y;}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 45%;filter:brightness(0.6);transition:opacity .9s ease;-webkit-transform:translateZ(0);transform:translateZ(0)}
   .hero-vignette{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,0.96) 0%,rgba(6,6,6,0.7) 22%,rgba(6,6,6,0.2) 45%,transparent 62%)}
   .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 28px 44px;z-index:2;max-width:100%}
@@ -1368,12 +1368,17 @@ let heroTimer=setInterval(rotateHero,6000);
 function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(rotateHero,6000);}
 /* Touch swipe on hero */
 (function(){
-  let tx=0;
+  let tx=0,ty=0;
   const hero=document.querySelector('.hero');
-  hero.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  hero.addEventListener('touchstart',e=>{
+    tx=e.touches[0].clientX;
+    ty=e.touches[0].clientY;
+  },{passive:true});
   hero.addEventListener('touchend',e=>{
     const dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)>50){
+    const dy=e.changedTouches[0].clientY-ty;
+    // Only treat as horizontal swipe if X movement dominates
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
       if(dx<0){const next=(hCur+1)%HERO_IMGS.length;hCur=next-1;rotateHero();}
       else{hCur=(hCur-2+HERO_IMGS.length)%HERO_IMGS.length;rotateHero();}
       resetHeroTimer();
