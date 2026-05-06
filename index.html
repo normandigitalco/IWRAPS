@@ -1286,7 +1286,7 @@ let current='home';
 const floatBtn=document.getElementById('floatBtn');
 
 function goService(anchor){go('services');setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},380);}
-function go(id){
+function go(id,fromPop){
   if(!PAGES.includes(id))return;
   const prev=document.getElementById(current);
   const next=document.getElementById(id);
@@ -1295,11 +1295,17 @@ function go(id){
   requestAnimationFrame(()=>requestAnimationFrame(()=>next.classList.add('visible')));
   current=id;
   window.scrollTo({top:0,behavior:'instant'});
-  try{history.replaceState(null,'',window.location.pathname)}catch(e){}
+  try{
+    if(!fromPop){history.pushState({page:id},'',(id==='home'?window.location.pathname:'#'+id));}
+  }catch(e){}
   PAGES.forEach(p=>{const el=document.getElementById('nl-'+p);if(el)el.classList.toggle('act',p===id)});
   if(id==='gallery')renderGal(currentFilter);
   updateFloat();
 }
+window.addEventListener('popstate',function(e){
+  const id=(e.state&&e.state.page)||'home';
+  go(id,true);
+});
 
 /* ── MOBILE MENU ── */
 function toggleMenu(){
