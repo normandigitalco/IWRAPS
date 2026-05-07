@@ -3,18 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Force Instagram/Facebook WebView to open in real browser -->
-  <meta name="format-detection" content="telephone=no"/>
+  <!-- Fix vh on mobile (accounts for address bar) -->
   <script>
-    // Redirect Instagram/FB in-app browser to Safari
-    if(/Instagram|FBAN|FBAV/.test(navigator.userAgent)){
-      if(/iPhone|iPad|iPod/.test(navigator.userAgent)){
-        var url=window.location.href;
-        window.location.href='safari-https://'+url.replace(/^https?:\/\//,'');
-        setTimeout(function(){window.location.replace(url);},1500);
-      }
-    }
-    // Fix vh on mobile - set once, only update on orientation change not scroll-triggered resize
     function setVh(){document.documentElement.style.setProperty('--vh',window.innerHeight*0.01+'px');}
     setVh();
     window.addEventListener('orientationchange',function(){setTimeout(setVh,300);});
