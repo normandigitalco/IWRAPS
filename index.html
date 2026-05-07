@@ -6,12 +6,12 @@
   <!-- Force Instagram/Facebook WebView to open in real browser -->
   <meta name="format-detection" content="telephone=no"/>
   <script>
-    // Redirect Instagram/FB in-app browser to real browser
+    // Redirect Instagram/FB in-app browser to Safari
     if(/Instagram|FBAN|FBAV/.test(navigator.userAgent)){
-      // On iOS, deep-link to Safari
       if(/iPhone|iPad|iPod/.test(navigator.userAgent)){
-        window.location.href='googlechrome://'+window.location.href.replace(/^https?:\/\//,'');
-        setTimeout(function(){window.location.href=window.location.href;},500);
+        var url=window.location.href;
+        window.location.href='safari-https://'+url.replace(/^https?:\/\//,'');
+        setTimeout(function(){window.location.replace(url);},1500);
       }
     }
     // Fix vh on mobile (accounts for address bar)
@@ -30,18 +30,20 @@
   <meta property="og:title" content="IWRAPS | Vehicle Wraps, Window Tint & PPF — Fort Worth, TX"/>
   <meta property="og:description" content="High end vehicle wraps, window tint & PPF. Private studio, appointment based. Serving Fort Worth and all of DFW."/>
   <meta property="og:image" content="https://iwraps.pages.dev/IMG_7207.jpg"/>
+  <meta property="og:image:secure_url" content="https://iwraps.pages.dev/IMG_7207.jpg"/>
   <meta property="og:image:width" content="1080"/>
-  <meta property="og:image:height" content="1350"/>
+  <meta property="og:image:height" content="1080"/>
   <meta property="og:image:type" content="image/jpeg"/>
+  <meta property="og:site_name" content="IWRAPS"/>
   <meta name="description" content="High end vehicle wraps, window tint & PPF in Fort Worth, TX. Private appointment-based studio serving all of DFW."/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://iwrapstx.com/"/>
+  <link rel="canonical" href="https://iwraps.pages.dev/"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <!-- Inline SVG favicon as base64 fallback -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23080808'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='16' fill='%233ddc57'>IW</text></svg>"/>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png"/>
-  <link rel="preload" as="image" href="IMG_7204.webp" fetchpriority="high"/>
+  <link rel="preload" as="image" href="IMG_7239.webp" fetchpriority="high"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -1207,7 +1209,7 @@
   </div>
 
   <div class="map-wrap" style="position:relative">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.9!2d-97.3318!3d32.7041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e72ea23855555%3A0x1!2s3241+S+Main+St%2C+Fort+Worth%2C+TX+76110!5e0!3m2!1sen!2sus!4v1700000000000"
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.9256!2d-97.33180!3d32.70410!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e72e9f0000001%3A0x1!2s3241+S+Main+St%2C+Fort+Worth%2C+TX+76110!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus"
       loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="IWRAPS location"
       style="filter:invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.85)"></iframe>
   </div>
