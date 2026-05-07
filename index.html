@@ -64,8 +64,8 @@
     --con:'Barlow Condensed',sans-serif;
     --body:'Barlow',sans-serif;
   }
-  html{scroll-behavior:auto;overscroll-behavior:none;}
-  body{background:var(--dk);color:#fff;font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden;scroll-behavior:auto;overscroll-behavior-y:none;}
+  html{scroll-behavior:auto;overscroll-behavior:none;-webkit-overflow-scrolling:auto;}
+  body{background:var(--dk);color:#fff;font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden;scroll-behavior:auto;overscroll-behavior:none;-webkit-overflow-scrolling:auto;}
   /* Fix iOS 300ms tap delay on all interactive elements */
   a,button,[onclick]{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
   ::selection{background:var(--g);color:#000}
@@ -1310,9 +1310,13 @@ function go(id,fromPop){
   if(!PAGES.includes(id))return;
   const prev=document.getElementById(current);
   const next=document.getElementById(id);
-  if(prev&&prev!==next){prev.classList.remove('visible');setTimeout(()=>prev.classList.remove('active'),220)}
+  // Hide prev immediately, show next immediately — no overlap
+  if(prev&&prev!==next){
+    prev.classList.remove('active');
+    prev.classList.remove('visible');
+  }
   next.classList.add('active');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>next.classList.add('visible')));
+  next.classList.add('visible');
   current=id;
   window.scrollTo({top:0,behavior:'instant'});
   try{
@@ -1331,12 +1335,15 @@ window.addEventListener('popstate',function(e){
 function toggleMenu(){
   document.getElementById('ham').classList.toggle('open');
   document.getElementById('mobMenu').classList.toggle('open');
-  document.body.style.overflow=document.getElementById('mobMenu').classList.contains('open')?'hidden':'';
+  // Use visibility lock instead of overflow to preserve overscroll-behavior
+  document.body.style.position=document.getElementById('mobMenu').classList.contains('open')?'fixed':'';
+  document.body.style.width=document.getElementById('mobMenu').classList.contains('open')?'100%':'';
 }
 function closeMenu(){
   document.getElementById('ham').classList.remove('open');
   document.getElementById('mobMenu').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
 }
 
 window.scrollTo(0,0);
