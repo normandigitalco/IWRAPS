@@ -64,10 +64,10 @@
     --con:'Barlow Condensed',sans-serif;
     --body:'Barlow',sans-serif;
   }
-  html{scroll-behavior:auto;overscroll-behavior:none;-webkit-overflow-scrolling:auto;}
-  body{background:var(--dk);color:#fff;font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden;scroll-behavior:auto;overscroll-behavior:none;-webkit-overflow-scrolling:auto;}
+  html{scroll-behavior:auto;overscroll-behavior-x:none;-webkit-overflow-scrolling:auto;}
+  body{background:var(--dk);color:#fff;font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden;scroll-behavior:auto;overscroll-behavior-x:none;-webkit-overflow-scrolling:auto;touch-action:pan-y;}
   /* Fix iOS 300ms tap delay on all interactive elements */
-  a,button,[onclick]{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+  a,button,[onclick],div[onclick]{touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer;}
   ::selection{background:var(--g);color:#000}
   ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.2)}
   a{color:inherit;text-decoration:none}
@@ -1352,6 +1352,28 @@ function closeMenu(){
 }
 
 window.scrollTo(0,0);
+
+/* ── INSTANT TAP — fire onclick on touchstart for divs to bypass iOS delay ── */
+document.addEventListener('touchstart', function(e){
+  const el = e.target.closest('div[onclick]');
+  if(!el) return;
+  // Only fire if it's a tap not a scroll — check on touchend
+  el._touchStartY = e.touches[0].clientY;
+  el._touchStartX = e.touches[0].clientX;
+}, {passive:true});
+document.addEventListener('touchend', function(e){
+  const el = e.target.closest('div[onclick]');
+  if(!el || el._touchStartY === undefined) return;
+  const dy = Math.abs(e.changedTouches[0].clientY - el._touchStartY);
+  const dx = Math.abs(e.changedTouches[0].clientX - el._touchStartX);
+  // Only fire if movement was minimal (actual tap not scroll)
+  if(dy < 10 && dx < 10){
+    e.preventDefault();
+    el.click();
+  }
+  el._touchStartY = undefined;
+  el._touchStartX = undefined;
+}, {passive:false});
 /* ── HERO — rotating background image ── */
 const HERO_IMGS=[
   {src:'IMG_7239.webp', mob:'center 50%', desk:'center 70%'},
